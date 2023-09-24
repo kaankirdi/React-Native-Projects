@@ -10,34 +10,34 @@ import {
 } from 'react-native';
 
 const App = () => {
-  const [text, setText] = useState(''); // TextInput'dan gelen metni saklamak için kullanıyoruz
-  const [data, setData] = useState([]); // Eklenen metinleri saklamak için kullanıyoruz
+  const [text, setText] = useState(''); 
+  const [data, setData] = useState([]);
   const [counter, setCounter] = useState(0);
 
   const handleAddText = () => {
     if (text.trim() !== '') {
       // Metin boş değilse ekle
       setData([...data, { text, id: counter }]);
-      setCounter(counter + 1); // Sayaçı artır
-      setText(''); // TextInput'u temizle
+      setCounter(counter + 1); 
+      setText(''); 
     }
   };
 
   const handleDeleteText = (id) => {
-    // Metini silmeye çalıştığınızda, metinin üzerine çizgi çek ve sayaçı azalt
+  
     const updatedData = data.map((item) => {
       if (item.id === id) {
         if (item.isPressed) {
-          return { ...item, isPressed: false, isDeleted: false }; // Task'a bir daha basıldığında renk ve çizgiyi geri al
+          return { ...item, isPressed: false, isDeleted: false }; 
         } else {
-          return { ...item, isPressed: true, isDeleted: true }; // Task'a basıldığında isPressed'i true yap ve çizgi çek
+          return { ...item, isPressed: true, isDeleted: true }; 
         }
       }
       return item;
     });
   
     setData(updatedData);
-    setCounter(updatedData.filter((item) => !item.isDeleted).length); // Silinmemiş görevleri say
+    setCounter(updatedData.filter((item) => !item.isDeleted).length); 
   };
   
   
@@ -45,7 +45,7 @@ const App = () => {
     <TouchableOpacity
       style={[styles.tasks, item.isPressed ? styles.taskPressed : null]}
       onPress={() => handleDeleteText(item.id)}
- // Metin silinmişse dokunulamaz
+
     >
       <Text style={item.isDeleted ? styles.deletedText : {}}>{item.text}</Text>
     </TouchableOpacity>
@@ -138,13 +138,13 @@ const styles = StyleSheet.create({
   },
   flatlistContainer: {
     flex: 3,
-    margin:10, // FlatList'in ekran dışına taşmasını önler
+    margin:10, 
     flexDirection:'row',
     
     
   },
   deletedText: {
-    textDecorationLine: 'line-through', // Metin üzerine çizgi çek
+    textDecorationLine: 'line-through', 
   },
   taskPressed: {
     backgroundColor: 'red',
