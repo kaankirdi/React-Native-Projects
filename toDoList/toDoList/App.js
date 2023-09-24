@@ -16,7 +16,7 @@ const App = () => {
 
   const handleAddText = () => {
     if (text.trim() !== '') {
-      // Metin boş değilse ekle
+
       setData([...data, { text, id: counter }]);
       setCounter(counter + 1); 
       setText(''); 
