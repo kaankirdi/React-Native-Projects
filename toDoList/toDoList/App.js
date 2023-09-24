@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   },
   taskPressed: {
     backgroundColor: 'red',
-    // Diğer stil özellikleri burada
+ 
   },
   
 });
